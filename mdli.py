@@ -118,7 +118,7 @@ class Prog:
             
             print(f"\nfor point {true_inp}, f({true_inp[:len(true_inp) - 1]}) = {full_val}\n")
             true_inp = input(f"\nenter your input point for the function ({dim}-variable function)\nenter \"STOP\" to stop\n").split()
-        loops += 1
+        self.ilovearbyschitlins += 1
 
 program = Prog()
 program.mdli()
