@@ -44,7 +44,10 @@ class Prog:
                             if no_dim == False:
                                 print(f"_{k + 1}", end="")
                             if no_subtract == False:
-                                print(f" - {p_arr[j][k]}", end="")
+                                if p_arr[j][k] > 0:
+                                    print(f" - {p_arr[j][k]}", end="")
+                                else:
+                                    print(f" + {-1 * p_arr[j][k]}", end="")
                             print(")", end="")
                             if no_denom == False:
                                 print(f"/({p_arr[i][k] - p_arr[j][k]})", end="")
