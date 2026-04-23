@@ -124,7 +124,7 @@ class Prog:
                     print(",", end="")
             print(f") = {full_val}\n", end="")
             
-            true_inp = input(f"\nenter your input point for the function ({dim}-variable function)\nenter \"STOP\" to stop\n").split()
+            true_inp = input(f"\nenter your input point for the function ({dim}-variable function), or enter \"STOP\" to stop\n").split()
         self.ilovearbyschitlins += 1
 
 program = Prog()
