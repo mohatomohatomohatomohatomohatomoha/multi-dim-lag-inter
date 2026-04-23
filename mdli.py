@@ -90,7 +90,7 @@ class Prog:
                         break
                     c += 1
                 if fine2 == True:
-                    print(" + ")
+                    print(" + ", end="")
                 
         print()
         
