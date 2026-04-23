@@ -63,7 +63,8 @@ class Prog:
                             a.k.a. every multiplier past it creates a division by zero case
                             in that case, we stop the multiplier notation because every multiplier past it wont be printed
                             
-                            this applies to the addition edge case as well
+                            this edge case appears here and in the addition notation part as well
+                            
                             """
                             
                             if k != dim - 1:
