@@ -63,17 +63,14 @@ class Prog:
                             a.k.a. every multiplier past it creates a division by zero case
                             in that case, we stop the multiplier notation because every multiplier past it wont be printed
                             
-                            for future me, the reason for the while range is because for integers:
-                            b < dim - k --> b + k < dim --> b + k <= dim - 1 is true, and this means
-                            it loops through every value of b so that b + k are in range of the arrays p_arr[i] and p_arr[j]
-                            
                             this applies to the addition edge case as well
                             """
                             
                             if k != dim - 1:
                                 fine = False
                                 b = 1
-                                while b < dim - k:
+                                # loops through every b in range of the array
+                                while b + k <= dim - 1:
                                     if p_arr[i][k + b] != p_arr[j][k + b]:
                                         fine = True
                                         break
@@ -85,7 +82,8 @@ class Prog:
             if i != len(p_arr) - 1:
                 fine2 = False
                 c = 1
-                while c < len(p_arr) - i: 
+                # loops through every c in range of the array
+                while c + i <= len(p_arr) - 1: 
                     if j != i:
                         fine2 = True
                         break
