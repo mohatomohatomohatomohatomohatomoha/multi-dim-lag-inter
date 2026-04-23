@@ -1,10 +1,12 @@
-print("starting program")
 class Prog:
+    def __init__(self):
+        self.ilovearbyschitlins = 0
     def mdli(self):
-        # multi-dimensional lagrangian interpolation
-        
-        print("\ninput \"STOP\" to stop entering points")
-        
+        if self.ilovearbyschitlins == 0:
+            print("input \"STOP\" to stop entering points")
+        else:
+            print("\ninput \"STOP\" to stop entering points")
+            
         # point array creation begin
         p_arr = []
         dim = int(input("# of input values (total values - 1)\n"))
@@ -50,8 +52,9 @@ class Prog:
                             print(" * ", end="")
             if i != len(p_arr) - 1:
                 print(" + ", end="")
+        print()
         
-        
+        # taking input
         true_inp = input(f"\nenter your input point for the function ({dim}-variable function)\nenter \"STOP\" to stop\n").split()
         while true_inp[0].lower() != "stop":
             for i in range(len(true_inp)):
@@ -74,6 +77,7 @@ class Prog:
             
             print(f"\nfor point {true_inp}, f({true_inp[:len(true_inp) - 1]}) = {full_val}\n")
             true_inp = input(f"\nenter your input point for the function ({dim}-variable function)\nenter \"STOP\" to stop\n").split()
+        loops += 1
 
 program = Prog()
 program.mdli()
