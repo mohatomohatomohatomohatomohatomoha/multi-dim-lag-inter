@@ -25,13 +25,15 @@ class Prog:
                 x = input(f"\nnot enough values, enter a point ({dim + 1} numbers)\n").split()
         # point array creation complete
         
-        # printing function
+        # printing function, LHS
         print("f(", end="")
         for i in range(dim):
             print(f"x_{i + 1}", end="")
             if i + 1 != dim:
                 print(",", end="")
         print(") = ", end="")
+        
+        # printing function, RHS
         for i in range(len(p_arr)):
             print(p_arr[i][dim], end="")
             for j in range(len(p_arr)):
@@ -95,7 +97,7 @@ class Prog:
         print()
         
         # taking input
-        true_inp = input(f"\nenter your input point for the function ({dim}-variable function)\nenter \"STOP\" to stop\n").split()
+        true_inp = input(f"\nenter your input point for the function ({dim}-variable function), or enter \"STOP\" to stop\n").split()
         while true_inp[0].lower() != "stop":
             for i in range(len(true_inp)):
                 true_inp[i] = int(true_inp[i])
@@ -115,7 +117,13 @@ class Prog:
                 a *= p_arr[i][dim]
                 full_val += a
             
-            print(f"\nfor point {true_inp}, f({true_inp[:len(true_inp) - 1]}) = {full_val}\n")
+            print("\nf(", end="")
+            for i in range(len(true_inp)):
+                print(f"{true_inp[i]}", end="")
+                if i < len(true_inp) - 1:
+                    print(",", end="")
+            print(f") = {full_val}\n", end="")
+            
             true_inp = input(f"\nenter your input point for the function ({dim}-variable function)\nenter \"STOP\" to stop\n").split()
         self.ilovearbyschitlins += 1
 
