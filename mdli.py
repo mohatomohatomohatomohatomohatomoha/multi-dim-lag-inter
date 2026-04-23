@@ -26,14 +26,17 @@ class Prog:
         # point array creation complete
         
         # printing function
-        print("F = ", end="")
+        print("f(", end="")
+        for i in range(dim):
+            print(f"x_{i + 1}", end="")
+            if i + 1 != dim:
+                print(",", end="")
+        print(") = ", end="")
         for i in range(len(p_arr)):
-            if p_arr[i][dim] != 1:
-                print(p_arr[i][dim], end="")
+            print(p_arr[i][dim], end="")
             for j in range(len(p_arr)):
                 if j != i:
-                    if p_arr[i][dim] != 1:
-                        print(f" * ", end="")
+                    print(f" * ", end="")
                     for k in range(dim):
                         if p_arr[i][k] != p_arr[j][k]:
                             #print(f"(x_{k + 1} - {p_arr[j][k]})/({p_arr[i][k] - p_arr[j][k]})", end="")
@@ -51,10 +54,44 @@ class Prog:
                             print(")", end="")
                             if no_denom == False:
                                 print(f"/({p_arr[i][k] - p_arr[j][k]})", end="")
-                        if k != dim - 1:
-                            print(" * ", end="")
+                                
+                            """
+                            
+                            really icky edge case for multiplying
+                            
+                            current multiplier isnt the last of the sum, but every past multiplier in the sum is invalid
+                            a.k.a. every multiplier past it creates a division by zero case
+                            in that case, we stop the multiplier notation because every multiplier past it wont be printed
+                            
+                            for future me, the reason for the while range is because:
+                            b - k < dim --> b + k <= dim - 1 --> b + k are in range of the arrays p_arr[i] and p_arr[j]
+                            
+                            this applies to the addition edge case as well
+                            """
+                            
+                            if k != dim - 1:
+                                fine = False
+                                b = 1
+                                while b < dim - k:
+                                    if p_arr[i][k + b] != p_arr[j][k + b]:
+                                        fine = True
+                                        break
+                                    b += 1
+                                if fine == True:
+                                    print(" * ", end="")
+                                    
+            # the edge case also applies to this!!
             if i != len(p_arr) - 1:
-                print(" + ", end="")
+                fine2 = False
+                c = 1
+                while c < len(p_arr) - i: 
+                    if j != i:
+                        fine2 = True
+                        break
+                    c += 1
+                if fine2 == True:
+                    print(" + ")
+                
         print()
         
         # taking input
