@@ -26,7 +26,7 @@ class Prog:
         # point array creation complete
         
         # printing function, LHS
-        print("f(", end="")
+        print("\nf(", end="")
         for i in range(dim):
             print(f"x_{i + 1}", end="")
             if i + 1 != dim:
