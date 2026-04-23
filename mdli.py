@@ -63,8 +63,9 @@ class Prog:
                             a.k.a. every multiplier past it creates a division by zero case
                             in that case, we stop the multiplier notation because every multiplier past it wont be printed
                             
-                            for future me, the reason for the while range is because:
-                            b - k < dim --> b + k <= dim - 1 --> b + k are in range of the arrays p_arr[i] and p_arr[j]
+                            for future me, the reason for the while range is because for integers:
+                            b < dim - k --> b + k < dim --> b + k <= dim - 1 is true, and this means
+                            it loops through every value of b so that b + k are in range of the arrays p_arr[i] and p_arr[j]
                             
                             this applies to the addition edge case as well
                             """
