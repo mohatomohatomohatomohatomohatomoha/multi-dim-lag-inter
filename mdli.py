@@ -22,7 +22,7 @@ class Prog:
                 print(f"\ncurrent point array:")
                 for point in p_arr:
                     print(*point)
-                x = input("\nenter a point\n").split()
+                x = input("\nenter a point.\n").split()
                 while (len(x) != dim + 1 and x[0].lower() != "stop"):
                     x = input(f"\nwrong amount of values, enter a point. ({dim + 1} numbers)\n").split()
             # point array creation complete
