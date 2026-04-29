@@ -122,7 +122,7 @@ class Prog:
                 print(f"\n{f_str}")
                 print("\ntime taken to find a valid function:", time() - start_time)
                 """
-                i cannot for the life of me find out why this code returns the wrong value
+                cant for the life of me find out why this code returns the wrong value
                 changing this to work soon, hopefully
                 
                 # taking input
