@@ -131,11 +131,11 @@ class Prog:
             print(f") = {full_val}\n", end="")
             
             true_inp = input(f"\nenter your input point for the function ({dim}-variable function), or enter \"STOP\" to stop\n").split()
+        self.iters += 1
         if self.iters > 1 or self.iters < 1:
             print(f"\n{self.iters} iterations of this program have been done.")
         else:
             print(f"\n{self.iters} iteration of this program has been done.")
-        self.iters += 1
 
 program = Prog()
 program.mdli()
