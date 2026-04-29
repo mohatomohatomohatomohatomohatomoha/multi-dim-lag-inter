@@ -167,7 +167,7 @@ class Prog:
                 """
             # if array is not valid
             else:
-                print("you have a duplicated point in your point array. try again")
+                print("\nyou have a duplicated point in your point array. try again")
             
             self.iters += 1
             if self.iters > 1 or self.iters < 1:
