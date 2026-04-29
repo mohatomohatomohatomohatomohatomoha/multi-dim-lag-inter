@@ -12,9 +12,9 @@ class Prog:
             # point array creation begin
             p_arr = []
             dim = int(input("# of input values (total values - 1)\n"))
-            x = input("\nenter a point\n").split()
-            while len(x) <= dim:
-                x = input(f"\nnot enough values, enter a point ({dim + 1} numbers)\n").split()
+            x = input("\nenter a point.\n").split()
+            while len(x) != dim + 1:
+                x = input(f"\nwrong amount of values, enter a point. ({dim + 1} numbers)\n").split()
             while x[0].lower() != "stop":
                 for i in range(len(x)):
                     x[i] = int(x[i])
@@ -23,8 +23,8 @@ class Prog:
                 for point in p_arr:
                     print(*point)
                 x = input("\nenter a point\n").split()
-                while (len(x) <= dim and x[0].lower() != "stop"):
-                    x = input(f"\nnot enough values, enter a point ({dim + 1} numbers)\n").split()
+                while (len(x) != dim + 1 and x[0].lower() != "stop"):
+                    x = input(f"\nwrong amount of values, enter a point. ({dim + 1} numbers)\n").split()
             # point array creation complete
             
             start_time = time()
