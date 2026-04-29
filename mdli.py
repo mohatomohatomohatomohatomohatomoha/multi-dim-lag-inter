@@ -105,7 +105,7 @@ class Prog:
             
             valid_p_arr = True
             
-            # checking for point dupliation
+            # checking for point duplication
             for i in range(len(p_arr)):
                 for j in range(len(p_arr)):
                     if i != j:
