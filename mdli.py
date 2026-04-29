@@ -25,37 +25,38 @@ class Prog:
                 x = input(f"\nnot enough values, enter a point ({dim + 1} numbers)\n").split()
         # point array creation complete
         
+        f_str = ""
         # printing function, LHS
-        print("\nf(", end="")
+        f_str += "f("
         for i in range(dim):
-            print(f"x_{i + 1}", end="")
+            f_str += f"x_{i + 1}"
             if i + 1 != dim:
-                print(",", end="")
-        print(") = ", end="")
+                f_str += ","
+        f_str += ") = "
         
         # printing function, RHS
         for i in range(len(p_arr)):
-            print(p_arr[i][dim], end="")
+            f_str += str(p_arr[i][dim])
             for j in range(len(p_arr)):
                 if j != i:
-                    print(f" * ", end="")
+                    f_str += f" * "
                     for k in range(dim):
                         if p_arr[i][k] != p_arr[j][k]:
                             #print(f"(x_{k + 1} - {p_arr[j][k]})/({p_arr[i][k] - p_arr[j][k]})", end="")
                             no_dim = (dim == 1)
                             no_subtract = (p_arr[j][k] == 0)
                             no_denom = (p_arr[i][k] - p_arr[j][k] == 1)
-                            print(f"(x", end="")
+                            f_str += f"(x"
                             if no_dim == False:
-                                print(f"_{k + 1}", end="")
+                                f_str += f"_{k + 1}"
                             if no_subtract == False:
                                 if p_arr[j][k] > 0:
-                                    print(f" - {p_arr[j][k]}", end="")
+                                    f_str += f" - {p_arr[j][k]}"
                                 else:
-                                    print(f" + {-1 * p_arr[j][k]}", end="")
-                            print(")", end="")
+                                    f_str += f" + {-1 * p_arr[j][k]}"
+                            f_str += ")"
                             if no_denom == False:
-                                print(f"/({p_arr[i][k] - p_arr[j][k]})", end="")
+                                f_str += f"/({p_arr[i][k] - p_arr[j][k]})"
                                 
                             """
                             
@@ -74,12 +75,14 @@ class Prog:
                                 b = 1
                                 # loops through every b in range of the array
                                 while b + k <= dim - 1:
+                                    # if there exists a valid future multiplier
                                     if p_arr[i][k + b] != p_arr[j][k + b]:
                                         fine = True
                                         break
                                     b += 1
+                                # if there exists a valid future multiplier
                                 if fine == True:
-                                    print(" * ", end="")
+                                    f_str += " * "
                                     
             # the edge case also applies to this!!
             if i != len(p_arr) - 1:
@@ -87,13 +90,16 @@ class Prog:
                 c = 1
                 # loops through every c in range of the array
                 while c + i <= len(p_arr) - 1: 
+                    # if there exists a future valid summer
                     if j != i:
                         fine2 = True
                         break
                     c += 1
+                # if there exists a valid future summer
                 if fine2 == True:
-                    print(" + ", end="")
-                
+                    f_str += " + "
+        
+        print(f_str)
         print()
         
         # taking input
