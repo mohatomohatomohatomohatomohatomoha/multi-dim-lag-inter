@@ -8,7 +8,8 @@ class Prog:
                 print("input \"STOP\" to stop entering points")
             else:
                 print("\ninput \"STOP\" to stop entering points")
-                
+            
+            num_of_x = 0
             # point array creation begin
             p_arr = []
             dim = int(input("# of input values (total values - 1)\n"))
@@ -50,6 +51,7 @@ class Prog:
                                 no_dim = (dim == 1)
                                 no_subtract = (p_arr[j][k] == 0)
                                 no_denom = (p_arr[i][k] - p_arr[j][k] == 1)
+                                num_of_x += 1
                                 f_str += f"(x"
                                 if no_dim == False:
                                     f_str += f"_{k + 1}"
@@ -120,14 +122,11 @@ class Prog:
             # if array is valid
             if valid_p_arr == True:
                 print(f"\n{f_str}")
-                print("\ntime taken to find a valid function:", time() - start_time)
-                """
-                cant for the life of me find out why this code returns the wrong value
-                changing this to work soon, hopefully
-                
+                print(f"\ntime taken to find a valid function: {(time() - start_time) * 1000} ms")
                 # taking input
                 true_inp = input(f"\nenter your input point for the function ({dim}-variable function), or enter \"STOP\" to stop\n").split()
-                while true_inp[0].lower() != "stop":
+
+                while str(true_inp[0]).lower() != "stop":
                     start_time_2 = time()
                     for i in range(len(true_inp)):
                         true_inp[i] = int(true_inp[i])
@@ -135,36 +134,43 @@ class Prog:
                     true_point = true_inp
                     # input complete
                     
-                    # returning f(true_point)
-                    full_val = 0
-                    for i in range(len(p_arr)):
-                        for j in range(len(p_arr)):
-                            if j != i:
-                                a = 1
-                                for k in range(dim):
-                                    if p_arr[i][k] != p_arr[j][k]:
-                                        a *= (true_point[k] - p_arr[j][k])/(p_arr[i][k] - p_arr[j][k])
-                        a *= p_arr[i][dim]
-                        full_val += a
+                    # calculating the expression and replacing all variables with inputs
+                    expression = f_str[(4 * dim + 5):]
                     
-                    print("\nf(", end="")
-                    for i in range(len(true_inp)):
-                        print(f"{true_inp[i]}", end="")
-                        if i < len(true_inp) - 1:
-                            print(",", end="")
-                    print(f") = {full_val}\n", end="")
-                    end_time_2 = time()
-                    print("\ntime taken to find ", end="")
-                    print("f(", end="")
-                    for i in range(len(true_inp)):
-                        print(f"{true_inp[i]}", end="")
-                        if i < len(true_inp) - 1:
-                            print(",", end="")
-                    print(f"): ", end="")
-                    print(end_time_2 - start_time_2)
+                    if dim >= 2:
+                        count = 0
+                        i = 0
+                        while count < num_of_x:
+                            if expression[i] == "x" and expression[i + 1] == "_":
+                                count += 1
+                                expression = expression[:i] + str(true_point[int(expression[i + 2]) - 1]) + expression[i + 3:]
+                            i += 1
+                    elif dim == 1:
+                        count = 0
+                        i = 0
+                        while count < num_of_x:
+                            if expression[i] == "x":
+                                count += 1
+                                expression = expression[:i] + str(true_point[0]) + expression[i + 1:]
+                            i += 1
+                            
+                    print(expression)
+                    f_str_2 = ""
+                    # printing function, LHS
+                    f_str_2 += "f("
+                    for i in range(dim):
+                        f_str_2 += f"{true_point[i]}"
+                        if i + 1 != dim:
+                            f_str_2 += ","
+                    f_str_2 += ")"
                     
+                    # calculating complete
+                    print(f"\ntime taken to find {f_str_2}: {(time() - start_time_2) * 1000} ms")
+                    
+                    # take more input
                     true_inp = input(f"\nenter your input point for the function ({dim}-variable function), or enter \"STOP\" to stop\n").split()
-                """
+                
+
             # if array is not valid
             else:
                 print("\nyou have a duplicated point in your point array. try again")
