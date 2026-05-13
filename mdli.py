@@ -3,17 +3,17 @@ class Prog:
     def __init__(self):
         self.iters = 0
     def mdli(self):
+        print("multi-dimensional lagrange polynomial finder")
+        print("--------------------")
+        print("this program finds a function that crosses M points in (N+1)-dimensional space, given a point with N inputs that maps to 1 output\n\nexample: a point in 3-d space can be defined as the point (x_1, x_2, output), having 2 inputs; therefore, N = 2\n\nrun-time: O(M^2 * N)")
         while True:
             try:
-                if self.iters == 0:
-                    print("input \"STOP\" to stop entering points")
-                else:
-                    print("\ninput \"STOP\" to stop entering points")
+                print("\nprogram begun.\n\ninput \"STOP\" to stop inputting values when repeated inputs are inquired.\n")
                 
                 num_of_x = 0
                 # point array creation begin
                 p_arr = []
-                dim = int(input("# of input values (total values - 1)\n"))
+                dim = int(input("N = "))
                 x = input("\nenter a point.\n").split()
                 while len(x) != dim + 1:
                     x = input(f"\nwrong amount of values, enter a point. ({dim + 1} numbers)\n").split()
@@ -160,7 +160,6 @@ class Prog:
                                     expression = expression[:i] + str(true_point[0]) + expression[i + 1:]
                                 i += 1
                                 
-                        print(expression)
                         f_str_2 = ""
                         # printing function, LHS
                         f_str_2 += "f("
@@ -191,6 +190,6 @@ class Prog:
                 if again.lower() != "again":
                     break
             except Exception as e:
-                print(f"\nan error has occured: {e}")
+                print(f"\nan error has occured:\n{e}")
 program = Prog()
 program.mdli()
