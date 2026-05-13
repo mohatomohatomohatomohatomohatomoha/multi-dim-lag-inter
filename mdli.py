@@ -5,7 +5,7 @@ class Prog:
     def mdli(self):
         print("multi-dimensional lagrange polynomial finder")
         print("--------------------")
-        print("this program finds a function that crosses M points in (N+1)-dimensional space, given a point with N inputs that maps to 1 output\n\nexample: a point in 3-d space can be defined as the point (x_1, x_2, output), having 2 inputs; therefore, N = 2\n\nrun-time: O(M^2 * N)")
+        print("this program finds a function (the lagrange polynomial of the point array) that crosses M points in (N+1)-dimensional space, given a point with N inputs that maps to 1 output\n\nexample: a point in 3-d space can be defined as the point (x_1, x_2, output), having 2 inputs; therefore, N = 2\n\nrun-time: O(M^2 * N)")
         while True:
             try:
                 print("\nprogram begun.\n\ninput \"STOP\" to stop inputting values when repeated inputs are inquired.\n")
